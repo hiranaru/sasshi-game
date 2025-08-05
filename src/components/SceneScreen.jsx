@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "../styles/SceneScreen.css";
-import dummyScene from "../assets/dummy-scene.jpg";
 
 export default function SceneScreen({ onNext }) {
   const [showIntro, setShowIntro] = useState(true);
@@ -22,12 +21,13 @@ export default function SceneScreen({ onNext }) {
 
   return (
     <div className="scene-screen">
-      <img
-        src={dummyScene}
-        alt="シーン"
-        className="scene-image"
-        onClick={handleImageClick}
-      />
+<img
+  src="/dummy-scene.jpg"
+  alt="シーン"
+  className="scene-image"
+  onClick={handleImageClick}
+/>
+
 
       {showIntro && (
         <div className="overlay intro" onClick={() => setShowIntro(false)}>
