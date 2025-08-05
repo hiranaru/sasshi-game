@@ -31,7 +31,10 @@ export default function SceneScreen({ onNext }) {
 
       {showIntro && (
         <div className="overlay intro" onClick={() => setShowIntro(false)}>
-          <p>バスの中で何かに気づくことができるかな…？</p>
+         <p>バスは混雑していて、あなたはなんとなく立っている。</p>
+<p>ふとした違和感。視界の隅に、何かが引っかかる。</p>
+<p>…あなたは、その"違和感"に気づけるだろうか。</p>
+<p>画面をタップして、周囲をよく見てみよう。</p>
           <p>画面をタップして進んでね</p>
         </div>
       )}
@@ -51,8 +54,11 @@ export default function SceneScreen({ onNext }) {
 
       {showExplanation && (
         <div className="overlay explanation">
-          <p>そこはベビーカー置き場だよ。</p>
-          <p>ベビーカーの人を優先してあげてね。</p>
+<p>よく気づいたね。</p>
+<p>そこは、ベビーカー専用のスペース。</p>
+<p>今は荷物で塞がれていて、ベビーカーの親子が困っていたんだ。</p>
+<p>優しさって、「気づくこと」から始まるのかもしれない。</p>
+<p>次の場面では、もっと難しい「察し」が待っているよ。</p>
           <button onClick={onNext}>次へ</button>
         </div>
       )}
