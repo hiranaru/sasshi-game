@@ -1,5 +1,5 @@
 // src/components/SceneScreen.jsx
-import dummyScene from '../assets/dummy-scene.jpg'
+import dummyScene from '../dummy-scene.jpg'
 import '../styles/SceneScreen.css'
 
 export default function SceneScreen({ onCorrect }) {
