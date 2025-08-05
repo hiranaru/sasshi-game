@@ -1,5 +1,4 @@
 import { useState } from "react";
-import dummyScene from "../dummy-scene.jpg";
 import "../styles/SceneScreen.css";
 
 export default function SceneScreen({ onNext }) {
@@ -19,7 +18,7 @@ export default function SceneScreen({ onNext }) {
 
   return (
     <div className="scene-screen">
-     <img
+<img
   src="/dummy-scene.jpg"
   alt="Scene"
   className={`scene-image ${showImage ? 'show' : ''}`}
