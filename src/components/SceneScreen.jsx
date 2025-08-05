@@ -1,46 +1,59 @@
 import { useState } from "react";
 import "../styles/SceneScreen.css";
+import dummyScene from "../assets/dummy-scene.jpg";
 
 export default function SceneScreen({ onNext }) {
-  const [step, setStep] = useState(1); // 1:導入 → 2:画像表示 → 3:正解押し待ち → 4:解説
+  const [showIntro, setShowIntro] = useState(true);
+  const [showExplanation, setShowExplanation] = useState(false);
 
-  const handleOverlayClick = () => {
-    if (step === 1) setStep(2);
+  // 正解エリア座標（画面サイズに対して相対的）
+  const correctArea = { top: "60%", left: "70%", width: "10%", height: "15%" };
+
+  const handleImageClick = (e) => {
+    if (showIntro) {
+      setShowIntro(false); // 導入文タップで非表示
+    }
   };
 
-  const handleAnswerClick = () => {
-    if (step === 2) setStep(3);
-  };
-
-  const handleNext = () => {
-    onNext(); // App.jsx に渡す
+  const handleCorrectClick = (e) => {
+    e.stopPropagation();
+    setShowExplanation(true); // 正解エリアタップで解説表示
   };
 
   return (
     <div className="scene-screen">
-<img
-  src="/dummy-scene.jpg"
-  alt="Scene"
-  className={`scene-image ${showImage ? 'show' : ''}`}
-/>
+      <img
+        src={dummyScene}
+        alt="シーン"
+        className="scene-image"
+        onClick={handleImageClick}
+      />
 
-      {step === 1 && (
-        <div className="overlay intro" onClick={handleOverlayClick}>
-          <p>バスの中、あなたは座席に座っている。</p>
-          <p>次の停留所で、何かに気づけるかな？</p>
-          <p>画面をタップして進んでください。</p>
+      {showIntro && (
+        <div className="overlay intro" onClick={() => setShowIntro(false)}>
+          <p>バスの中で何かに気づくことができるかな…？</p>
+          <p>画面をタップして進んでね</p>
         </div>
       )}
 
-      {step === 2 && (
-        <div className="clickable-area" onClick={handleAnswerClick}></div>
+      {!showIntro && !showExplanation && (
+        <div
+          className="correct-area"
+          style={{
+            top: correctArea.top,
+            left: correctArea.left,
+            width: correctArea.width,
+            height: correctArea.height,
+          }}
+          onClick={handleCorrectClick}
+        />
       )}
 
-      {step === 3 && (
+      {showExplanation && (
         <div className="overlay explanation">
           <p>そこはベビーカー置き場だよ。</p>
           <p>ベビーカーの人を優先してあげてね。</p>
-          <button onClick={handleNext}>次へ</button>
+          <button onClick={onNext}>次へ</button>
         </div>
       )}
     </div>
