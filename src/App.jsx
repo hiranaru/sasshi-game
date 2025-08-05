@@ -1,17 +1,14 @@
-import { useState } from 'react'
-import SceneScreen from './components/SceneScreen'
+import { useState } from "react";
+import TitleScreen from "./components/TitleScreen";
+import SceneScreen from "./components/SceneScreen";
 
 export default function App() {
-  const [sceneIndex, setSceneIndex] = useState(0)
-
-  const handleCorrectTouch = () => {
-    alert('察し成功！次のシーンへ進みます')
-    setSceneIndex((prev) => prev + 1)
-  }
+  const [screen, setScreen] = useState("title");
 
   return (
-    <div className="app">
-      <SceneScreen key={sceneIndex} onCorrect={handleCorrectTouch} />
-    </div>
-  )
+    <>
+      {screen === "title" && <TitleScreen onStart={() => setScreen("scene")} />}
+      {screen === "scene" && <SceneScreen onNext={() => console.log("次のシーンへ")} />}
+    </>
+  );
 }
