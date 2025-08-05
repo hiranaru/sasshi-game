@@ -19,11 +19,11 @@ export default function SceneScreen({ onNext }) {
 
   return (
     <div className="scene-screen">
-      <img
-        src={dummyScene}
-        alt="scene"
-        className={`scene-image ${step >= 2 ? "show" : ""}`}
-      />
+     <img
+  src="/dummy-scene.jpg"
+  alt="Scene"
+  className={`scene-image ${showImage ? 'show' : ''}`}
+/>
 
       {step === 1 && (
         <div className="overlay intro" onClick={handleOverlayClick}>
